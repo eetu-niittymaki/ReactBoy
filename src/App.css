@@ -58,10 +58,11 @@
   position: absolute;
   justify-content: center;
   align-items: center;
-  top: 11.5%;
+  top: 12%;
   left: 23.5%;
   width: 54%;
   height: 30%;
+  background-color: #498d2ece;
   @media (max-width: 480px) {
     left: 30%;
   }
