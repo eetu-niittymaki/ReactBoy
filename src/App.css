@@ -6,7 +6,7 @@
 
 .App {
   text-align: center;
-  background-color: #393C9F;
+  background-color: var(--main-color);
   color: var(--background-main)
 }
 
@@ -26,9 +26,6 @@
   border: solid;
   border-color: var(--background-secondary);
   border-radius: 5%;
-}
-
-.rom-section {
 }
 
 #keyboard-info {
