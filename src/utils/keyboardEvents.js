@@ -111,5 +111,3 @@ export const selectEventUp = new KeyboardEvent('keyup', {
     code: 'KeyN',
     bubbles: true,
 })
-
-

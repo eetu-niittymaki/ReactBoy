@@ -69,7 +69,7 @@ function App() {
 
   const handleClick = () => {
     if (hoverRef.current) {
-      switch (hoverRef.current) {
+      switch (hoverRef.current) { // Horrible, disgusting
         case "A":
           document.dispatchEvent(kbEvents.aEvent)
           setTimeout(() => {
@@ -119,39 +119,49 @@ function App() {
           }, 100)
           break
       }
+      /*
+      const keyEventDown = new KeyboardEvent('keydown', {
+        key: hoverRef.current,
+        bubbles: true,
+      })
+
+      const keyEventUp = new KeyboardEvent('keyup', {
+        key: hoverRef.current,
+        bubbles: true,
+      })
+      document.dispatchEvent(keyEventDown)
+      setTimeout(() => {
+        document.dispatchEvent(keyEventUp)
+      }, 100)*/
     }
   }
 
   return (
     <div>
       <header className="App-header">
-        <h1 className="headerTitle">ReactBoy</h1>
+        <h1 className="headerTitle">React Boy</h1>
       </header>
-      <div className="canvasOuter">
-        <div className="canvasInner" id="canvasInner">
-          <ImageMapper src={run ? "/gameboy-on.png" : "/gameboy-off.png"}
-            map={maps.MAP}
-            width={canvasWidth * 2 * 0.90}
-            height={canvasHeight * 3.35}
-            responsive={true}
-            parentWidth={500}
-            onMouseEnter={area => enterArea(area)}
-            onMouseLeave={area => leaveArea(area)}
-            onClick={handleClick}
-          />
-          <canvas id="canvas"
-            className="canvas"
-            width="160"
-            height="144">
-            Your browser does not seem to support canvas.
-          </canvas>
-        </div>
-      </div>
       <div id="container" className="App" >
-        {/*<p className="commands">
-            <button onClick={() => pauseGame(true)}>Pause</button>
-            <button onClick={() => pauseGame(false)}>Run</button>
-          </p>*/}
+        <div className="canvasOuter">
+          <div className="canvasInner" id="canvasInner">
+            <ImageMapper src={run ? "/gameboy-on.png" : "/gameboy-off.png"}
+              map={maps.MAP}
+              width={canvasWidth * 2 * 0.90}
+              height={canvasHeight * 3.35}
+              responsive={true}
+              parentWidth={500}
+              onMouseEnter={area => enterArea(area)}
+              onMouseLeave={area => leaveArea(area)}
+              onClick={handleClick}
+            />
+            <canvas id="canvas"
+              className="canvas"
+              width="160"
+              height="144">
+              Your browser does not seem to support canvas.
+            </canvas>
+          </div>
+        </div>
         <p className="commands">
           <label>
             <input
