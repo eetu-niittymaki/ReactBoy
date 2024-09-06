@@ -17,6 +17,10 @@ body {
   text-align: center;
   align-items: center;
   justify-content: center;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+  }
 }
 
 .App-header {
@@ -43,13 +47,12 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  padding-right: 3%;
 }
 
 .canvasOuter {
-  display: flex;
   padding-top: 2%;
   margin:2 0px 60px;
-  flex-direction: column;
 }
 
 .canvasInner {
@@ -70,8 +73,9 @@ body {
   width: 55%;
   height: 30%;
   background-color: #498d2ece;
+
   @media (max-width: 480px) {
-    left: 30%;
+    left: 22.5%;
   }
 }
 
@@ -87,4 +91,8 @@ body {
   justify-content: center;
   align-items: center;
   color: var(--background-main)
+}
+
+.rom-section {
+  padding-left: 3%;
 }

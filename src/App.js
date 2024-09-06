@@ -107,15 +107,12 @@ function App() {
 
   return (
     <div>
-      {/*<header className="App-header">
-                <h1 className="headerTitle">React Boy</h1>
-            </header>*/}
       <div id="container" className="App">
         <KeyboardInfo/>
         <div className="canvasOuter">
           <div className="canvasInner" id="canvasInner">
             <ImageMapper
-              src={run ? "/gameboy-on.png" : "/gameboy-off.png"}
+              src={run ? `${process.env.PUBLIC_URL + "/gameboy-on.png"}` : `${process.env.PUBLIC_URL + "/gameboy-off.png"}`}
               map={maps.MAP}
               width={canvasWidth * 2 * 0.9}
               height={canvasHeight * 3.35}
@@ -150,10 +147,6 @@ function App() {
               Enable sound (experimental)
             </label>
           </p>
-          <p>
-            <span id="status"></span> <span id="game-name"></span>
-          </p>
-          <p id="error" className="hide"></p>
       </div>
     </div>
   )

@@ -3,7 +3,7 @@ import React from "react";
 const KeyboardInfo = () => {
     return (
         <div id="keyboard-info">
-          <h3>Use Keyboard or buttons on screen to control games</h3>
+          <h3>Use Keyboard or on screen <br/> buttons to control game</h3>
           <table>
             <thead>
               <tr>
