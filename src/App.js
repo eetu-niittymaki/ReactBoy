@@ -11,9 +11,8 @@ function App() {
   const soundEnableRef = useRef(null) // Ref for the sound checkbox
   const gameboyInstance = useRef(null) // Ref to store the Gameboy instance
   const [run, setRun] = useState(false)
-  const [canvasWidth, setCanvasWidth] = useState(160)
-  const [canvasHeight, setCanvasHeight] = useState(144)
   const hoverRef = useRef(null)
+  const gameNameRef = useRef()
   const canvasRef = useRef(null)
   const scrollKeys = useRef(false)
 
@@ -23,7 +22,7 @@ function App() {
       pad: { class: GameboyJS.Keyboard, mapping: null },
       romReaders: [
         new GameboyJS.RomFileReader(),
-        new GameboyJS.RomDropFileReader(canvasRef.current)
+        new GameboyJS.RomDropFileReader(document.getElementById('dropzone'))
       ]
     }
 
@@ -37,10 +36,6 @@ function App() {
     const gameboy = gameboyInstance.current
     if (gameboy) {
       gameboy.setSoundEnabled(soundEnableRef.current.checked)
-
-      const { width, height } = canvasRef.current.getBoundingClientRect()
-      setCanvasWidth(width)
-      setCanvasHeight(height)
     }
 
     const handleKeyDown = (e) => {
@@ -70,16 +65,23 @@ function App() {
 
   const leaveArea = useCallback(() => {
     hoverRef.current = null
-  }, [])
+  }, []) 
 
-  const handleFileLoad = (event) => {
-    const file = event.target.files[0]
+  const handleFileLoad = (file) => {
     if (file && file.name.split(".")[1] === "gb") {
       setRun(true)
+      let gameName = document.getElementById("game-name")
+      if (gameName) {
+        setTimeout(() => { // Returns empty string without delay for some reason
+          gameNameRef.current = gameName.innerText
+          console.log(gameNameRef.current)
+        }, 10)
+      }
     } else {
       setRun(false)
     }
   }
+
 
   const handleClick = useCallback(() => {
     const action = hoverRef.current
@@ -114,8 +116,6 @@ function App() {
             <ImageMapper
               src={run ? `${process.env.PUBLIC_URL + "/gameboy-on.png"}` : `${process.env.PUBLIC_URL + "/gameboy-off.png"}`}
               map={maps.MAP}
-              width={canvasWidth * 2 * 0.9}
-              height={canvasHeight * 3.35}
               responsive={true}
               parentWidth={500}
               imgWidth={500}
