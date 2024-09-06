@@ -4,10 +4,19 @@
   --background-secondary: #8d8a90;
 }
 
+body {
+  background-color: var(--main-color);
+}
+
 .App {
   text-align: center;
-  background-color: var(--main-color);
-  color: var(--background-main)
+  color: var(--background-main);
+  font-family: "Tomorrow", sans-serif;
+  display: flex;
+  flex-direction: row;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
 }
 
 .App-header {
@@ -18,6 +27,7 @@
   justify-content: center;
   font-size: calc(10px + 2vmin);
   background-color: var(--background-main);
+  font-family: "Tomorrow", sans-serif
 }
 
 .headerTitle {
@@ -56,8 +66,8 @@
   justify-content: center;
   align-items: center;
   top: 12%;
-  left: 23.5%;
-  width: 54%;
+  left: 23%;
+  width: 55%;
   height: 30%;
   background-color: #498d2ece;
   @media (max-width: 480px) {
@@ -69,4 +79,12 @@
   position: relative;
   justify-content: center;
   align-items: center;
+}
+
+.miscOptions {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: var(--background-main)
 }
