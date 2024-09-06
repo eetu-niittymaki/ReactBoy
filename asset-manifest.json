@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/ReactBoy/static/css/main.e6e29f2c.css",
-    "main.js": "/ReactBoy/static/js/main.df4ae667.js",
+    "main.css": "/ReactBoy/static/css/main.4fcacd86.css",
+    "main.js": "/ReactBoy/static/js/main.940f14b5.js",
     "index.html": "/ReactBoy/index.html",
-    "main.e6e29f2c.css.map": "/ReactBoy/static/css/main.e6e29f2c.css.map",
-    "main.df4ae667.js.map": "/ReactBoy/static/js/main.df4ae667.js.map"
+    "main.4fcacd86.css.map": "/ReactBoy/static/css/main.4fcacd86.css.map",
+    "main.940f14b5.js.map": "/ReactBoy/static/js/main.940f14b5.js.map"
   },
   "entrypoints": [
-    "static/css/main.e6e29f2c.css",
-    "static/js/main.df4ae667.js"
+    "static/css/main.4fcacd86.css",
+    "static/js/main.940f14b5.js"
   ]
 }
