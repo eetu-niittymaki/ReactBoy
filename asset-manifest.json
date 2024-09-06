@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/ReactBoy/static/css/main.b441c3ca.css",
+    "main.js": "/ReactBoy/static/js/main.4b051009.js",
+    "index.html": "/ReactBoy/index.html",
+    "main.b441c3ca.css.map": "/ReactBoy/static/css/main.b441c3ca.css.map",
+    "main.4b051009.js.map": "/ReactBoy/static/js/main.4b051009.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.b441c3ca.css",
+    "static/js/main.4b051009.js"
+  ]
+}
