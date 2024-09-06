@@ -1,4 +1,8 @@
 # ReactBoy
-Gameboy emulator running on React
 
-# Emulator not written by me (https://github.com/juchi/gameboy.js)!
+## Gameboy emulator running on React.
+
+### https://eetu-niittymaki.github.io/ReactBoy/
+
+## Emulator not written by me, just ported to React for fun. 
+### [Emulator repo](https://github.com/juchi/gameboy.js)
