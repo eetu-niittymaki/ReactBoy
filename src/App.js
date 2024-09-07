@@ -8,9 +8,13 @@ import * as maps from "./utils/mapObject"
 import GameboyJS from './dist/gameboy' // Import the GameboyJS library
 
 function App() {
+  const imgWidth = 500
+  
+  const [run, setRun] = useState(false)
+  const [showInfo, setShowInfo] = useState(false)
+  const [windowWidth, setWindowWidth] = useState((window.innerWidth > imgWidth ) ? imgWidth  : window.innerWidth)
   const soundEnableRef = useRef(null) // Ref for the sound checkbox
   const gameboyInstance = useRef(null) // Ref to store the Gameboy instance
-  const [run, setRun] = useState(false)
   const hoverRef = useRef(null)
   const gameNameRef = useRef()
   const canvasRef = useRef(null)
@@ -33,6 +37,7 @@ function App() {
 
   // Set sound and canvas dimensions
   useEffect(() => {
+    window.addEventListener("resize", handleResize)
     const gameboy = gameboyInstance.current
     if (gameboy) {
       gameboy.setSoundEnabled(soundEnableRef.current.checked)
@@ -59,6 +64,11 @@ function App() {
     }
   }, [])
 
+   // Makes sure resized images width isnt larger than images original width
+   const handleResize = () => {
+    setWindowWidth((window.innerWidth > imgWidth ) ? imgWidth  : window.innerWidth)
+  }
+
   const enterArea = useCallback((area) => {
     hoverRef.current = area.name
   }, [])
@@ -81,7 +91,6 @@ function App() {
       setRun(false)
     }
   }
-
 
   const handleClick = useCallback(() => {
     const action = hoverRef.current
@@ -110,15 +119,20 @@ function App() {
   return (
     <div>
       <div id="container" className="App">
-        <KeyboardInfo/>
+        <div id="keyboard-info"
+            onClick={() => setShowInfo(!showInfo)}>
+          {!showInfo ? <h2>Info</h2>
+                     : <KeyboardInfo/>
+          }
+        </div>
         <div className="canvasOuter">
           <div className="canvasInner" id="canvasInner">
             <ImageMapper
               src={run ? `${process.env.PUBLIC_URL + "/gameboy-on.png"}` : `${process.env.PUBLIC_URL + "/gameboy-off.png"}`}
               map={maps.MAP}
               responsive={true}
-              parentWidth={500}
-              imgWidth={500}
+              imgWidth={windowWidth} 
+              parentWidth={windowWidth}
               onMouseEnter={enterArea}
               onMouseLeave={leaveArea}
               onClick={handleClick}

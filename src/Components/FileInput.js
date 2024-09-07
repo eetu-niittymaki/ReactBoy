@@ -3,10 +3,10 @@ import { useRef } from "react";
 import "./FileInput.css";
 
 const FileInput = ({ handleChange }) => {
-  const fileInputRef = useRef(null);
+  const fileInputRef = useRef(null)
 
   const handleFileUploadClick = () => {
-    fileInputRef.current?.click();
+    fileInputRef.current?.click()
   }
 
   const handleFileDrop = (event) => {
@@ -37,7 +37,7 @@ const FileInput = ({ handleChange }) => {
         </div>
       </div>
     </div>
-  );
+  )
 }
 
 export default FileInput

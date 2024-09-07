@@ -2,7 +2,7 @@ import React from "react";
 
 const KeyboardInfo = () => {
     return (
-        <div id="keyboard-info">
+        <div>
           <h3>Use Keyboard or on screen <br/> buttons to control game</h3>
           <table>
             <thead>

@@ -50,6 +50,8 @@ body {
   border: 2px solid #d1d5db;
   border-radius: 0.375rem;
   padding: 2rem;
+  max-width: 10em;
+  cursor: pointer;
 }
 
 .canvasOuter {
