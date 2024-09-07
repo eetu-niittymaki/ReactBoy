@@ -4,5 +4,7 @@
 
 ### https://eetu-niittymaki.github.io/ReactBoy/
 
+![Alt text](https://i.postimg.cc/zB2CDLgj/img.png)
+
 ## Emulator not written by me, just ported to React for fun. 
-### [Emulator repo](https://github.com/juchi/gameboy.js)
+### [Emulator repository](https://github.com/juchi/gameboy.js)
