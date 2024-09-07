@@ -9,14 +9,13 @@ import GameboyJS from './dist/gameboy' // Import the GameboyJS library
 
 function App() {
   const imgWidth = 500
-  
+
   const [run, setRun] = useState(false)
   const [showInfo, setShowInfo] = useState(false)
   const [windowWidth, setWindowWidth] = useState((window.innerWidth > imgWidth ) ? imgWidth  : window.innerWidth)
   const soundEnableRef = useRef(null) // Ref for the sound checkbox
   const gameboyInstance = useRef(null) // Ref to store the Gameboy instance
   const hoverRef = useRef(null)
-  const gameNameRef = useRef()
   const canvasRef = useRef(null)
   const scrollKeys = useRef(false)
 
@@ -64,7 +63,7 @@ function App() {
     }
   }, [])
 
-   // Makes sure resized images width isnt larger than images original width
+   // Makes sure resized images width isn't larger than images original width
    const handleResize = () => {
     setWindowWidth((window.innerWidth > imgWidth ) ? imgWidth  : window.innerWidth)
   }
@@ -80,13 +79,6 @@ function App() {
   const handleFileLoad = (file) => {
     if (file && file.name.split(".")[1] === "gb") {
       setRun(true)
-      let gameName = document.getElementById("game-name")
-      if (gameName) {
-        setTimeout(() => { // Returns empty string without delay for some reason
-          gameNameRef.current = gameName.innerText
-          console.log(gameNameRef.current)
-        }, 10)
-      }
     } else {
       setRun(false)
     }
@@ -121,7 +113,7 @@ function App() {
       <div id="container" className="App">
         <div id="keyboard-info"
             onClick={() => setShowInfo(!showInfo)}>
-          {!showInfo ? <h2>Info</h2>
+          {!showInfo ? <h2 style={{minWidth: "25em"}}>Info</h2>
                      : <KeyboardInfo/>
           }
         </div>
