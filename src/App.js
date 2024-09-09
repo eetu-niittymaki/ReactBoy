@@ -13,9 +13,8 @@ function App() {
 
   const [run, setRun] = useState(false)
   const [showInfo, setShowInfo] = useState(false)
-  const [windowWidth, setWindowWidth] = useState((window.innerWidth > imgWidth ) ? imgWidth  : window.innerWidth)
+  const [windowWidth, setWindowWidth] = useState((window.innerWidth > imgWidth) ? imgWidth : window.innerWidth)
   const [gameTitle, setGameTitle] = useState()
-  const soundEnableRef = useRef(null) // Ref for the sound checkbox
   const gameboyInstance = useRef(null) // Ref to store the Gameboy instance
   const hoverRef = useRef(null)
   const canvasRef = useRef(null)
@@ -40,11 +39,6 @@ function App() {
   // Set sound and canvas dimensions
   useEffect(() => {
     window.addEventListener("resize", handleResize)
-    const gameboy = gameboyInstance.current
-    if (gameboy) {
-      gameboy.setSoundEnabled(soundEnableRef.current.checked)
-    }
-
     const handleKeyDown = (e) => {
       switch (e.key) {
         case "ArrowLeft":
@@ -68,16 +62,16 @@ function App() {
 
   useEffect(() => {
     const title = document.getElementById("game-name")
-      if (title) {
-        setTimeout(() => {
-          setGameTitle(title.innerText)
-        }, 10)
-      }
+    if (title) {
+      setTimeout(() => {
+        setGameTitle(title.innerText)
+      }, 10)
+    }
   })
 
-   // Makes sure resized images width isn't larger than images original width
-   const handleResize = () => {
-    setWindowWidth((window.innerWidth > imgWidth ) ? imgWidth  : window.innerWidth)
+  // Makes sure resized images width isn't larger than images original width
+  const handleResize = () => {
+    setWindowWidth((window.innerWidth > imgWidth) ? imgWidth : window.innerWidth)
   }
 
   const enterArea = useCallback((area) => {
@@ -86,7 +80,7 @@ function App() {
 
   const leaveArea = useCallback(() => {
     hoverRef.current = null
-  }, []) 
+  }, [])
 
   const handleFileLoad = (file) => {
     if (file && file.name.split(".")[1] === "gb") {
@@ -121,55 +115,40 @@ function App() {
   }, [])
 
   return (
-    <div>
-      <div id="container" className="App">
-        <div id="keyboard-info"
-            onClick={() => setShowInfo(!showInfo)}>
-          {!showInfo ? <h2>Info</h2>
-                     : <KeyboardInfo/>
-          }
-        </div>
-        <div className="canvasOuter">
-          <div className="canvasInner" id="canvasInner">
-            <ImageMapper
-              src={run ? `${process.env.PUBLIC_URL + "/gameboy-on.png"}` : `${process.env.PUBLIC_URL + "/gameboy-off.png"}`}
-              map={maps.MAP}
-              responsive={true}
-              imgWidth={windowWidth} 
-              parentWidth={windowWidth}
-              onMouseEnter={enterArea}
-              onMouseLeave={leaveArea}
-              onClick={handleClick}
-            />
-            <canvas
-              ref={canvasRef}
-              className="canvas"
-              width="160"
-              height="144"
-            >
-              Your browser does not seem to support canvas.
-            </canvas>
-          </div>
-        </div>
-        <div className="gameSection">
-          <ChooseFile handleFileLoad={handleFileLoad}/>
-          {gameTitle ? <ShowGameInfo title={gameTitle}/>
-                  : <></>
-          }
-       </div>
+    <div className="App" style={{ backgroundImage: `url(${process.env.PUBLIC_URL + "/bg.jpg"})` }}>
+      <div id="keyboard-info"
+        onClick={() => setShowInfo(!showInfo)}>
+        {!showInfo ? <h2>Info</h2>
+          : <KeyboardInfo />
+        }
       </div>
-      <div className="miscOptions">
-        <p className="commands">
-            <label>
-              <input
-                ref={soundEnableRef}
-                id="sound-enable"
-                type="checkbox"
-                defaultChecked={false}
-              />
-              Enable sound (experimental)
-            </label>
-          </p>
+      <div className="canvasOuter">
+        <div className="canvasInner" id="canvasInner">
+          <ImageMapper
+            src={run ? `${process.env.PUBLIC_URL + "/gameboy-on.png"}` : `${process.env.PUBLIC_URL + "/gameboy-off.png"}`}
+            map={maps.MAP}
+            responsive={true}
+            imgWidth={windowWidth}
+            parentWidth={windowWidth}
+            onMouseEnter={enterArea}
+            onMouseLeave={leaveArea}
+            onClick={handleClick}
+          />
+          <canvas
+            ref={canvasRef}
+            className="canvas"
+            width="160"
+            height="144"
+          >
+            Your browser does not seem to support canvas.
+          </canvas>
+        </div>
+      </div>
+      <div className="gameSection">
+        <ChooseFile handleFileLoad={handleFileLoad} />
+        {gameTitle ? <ShowGameInfo title={gameTitle} />
+          : <></>
+        }
       </div>
     </div>
   )

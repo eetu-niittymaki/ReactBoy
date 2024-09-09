@@ -4,9 +4,18 @@ import GetGameData from "../utils/GetGameData";
 const ShowGameInfo = ({title}) => {
     const [image, setImage] = useState()
     const [year, setYear] = useState()
-    const url = "http://localhost:8080"
+    const url ="http://localhost:8080/api/games" || process.env.REACT_APP_API_ENDPOINT 
     title = title.toLowerCase()
-    title = title.replace("pokemon", "pokémon") // Small cheat to make image fetching work correctly
+
+    if (title.includes("pokemon")) {
+        title = title.toLowerCase()
+        title = title.replace("pokemon", "pokémon") // Small cheat to make image fetching work correctly
+    }
+
+    if (title.includes("marioland")) { // Another cheat help me god
+        title = title.split("mario")
+        title = title[0] + "mario " + title[1]
+    }
 
     useEffect(() => {
         const getData = async () => {

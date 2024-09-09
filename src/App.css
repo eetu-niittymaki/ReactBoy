@@ -1,22 +1,23 @@
 :root {
   --main-color: #393C9F;
-  --background-main: #c4bebb;
+  --background-main: rgb(172, 26, 164);
   --background-secondary: #8d8a90;
 }
 
-body {
-  background-color: #3c40c4;
-}
-
 .App {
-  color: var(--background-main);
+  min-height: 100vh;
+  background-color: #3c40c4;
+  background-size: cover;
+  background-position: top bottom;
+  color: white;
   font-family: "Tomorrow", sans-serif;
   display: flex;
   flex-direction: row;
   text-align: center;
   align-items: center;
   justify-content: center;
-  @media (max-width: 924px) {
+  
+  @media (max-width: 1000px) {
     flex-direction: column;
   }
 }
@@ -25,7 +26,8 @@ body {
   align-items: center;
   justify-content: center;
   text-align: center;
-  border: 2px solid #d1d5db;
+  border: 2px solid white;
+  background-color: rgba(128, 128, 128, 0.247);
   border-radius: 0.375rem;
   padding: 2rem;
   width: 10em;
@@ -33,7 +35,6 @@ body {
 }
 
 .canvasOuter {
-  padding-top: 2%;
   padding-left: 3%;
 }
 
@@ -44,12 +45,9 @@ body {
 
 .canvas {
   position: absolute;
-  justify-content: center;
-  align-items: center;
-  top: 12%;
+  top: 11.75%;
   left: 23%;
   width: 55%;
-  height: 30%;
   background-color: #8bac0f;
 
   @media (max-width: 480px) {
@@ -57,17 +55,10 @@ body {
   }
 }
 
-.miscOptions {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  color: var(--background-main)
-}
-
 .gameSection {
-  width: 10%;
+  width: 12%;
   margin-left: 3%;
-  top: 40%;
+  top: 38%;
   position: sticky;
   align-items: center;
   justify-content: center;
@@ -75,11 +66,6 @@ body {
   flex-direction: column;
 }
 .gameCover {
-  max-width: 100%;
-  max-height: 100%;
-
-  @media (max-width: 762px) {
-    max-width: 40vw;
-    max-height: 30vh;
-  }
+  width: 25vh;
+  height: 25vh;
 }

@@ -1,7 +1,6 @@
 {
   "name": "react-gb-emu",
   "version": "0.1.0",
-  "homepage": "https://eetu-niittymaki.github.io/ReactBoy",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.17.0",
@@ -24,9 +23,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "backend": "cd backend && nodemon app.js",
-    "frontend": "cd frontend && react-scripts start"
+    "eject": "react-scripts eject"
   },
   "eslintConfig": {
     "extends": [

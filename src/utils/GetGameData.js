@@ -17,6 +17,7 @@ const GetGameData = async (url, title) => {
                 if (res[x].platforms[y].platform_name === "Game Boy" 
                     && res[x].sample_cover.image.includes("game-boy")) {
                         let image = res[x].sample_cover.image
+                        //let company = res[x].releases[0].companies[0].company_name
                         let release_year = res[x].platforms[y].first_release_date.split("-")[0]
                         results.push({image, release_year})
                 }
