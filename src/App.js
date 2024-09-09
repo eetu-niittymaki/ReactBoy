@@ -3,6 +3,7 @@ import { useEffect, useState, useRef, useCallback } from 'react'
 import ImageMapper from 'react-img-mapper'
 import KeyboardInfo from './Components/KeyboardInfo.js'
 import ChooseFile from './Components/ChooseFile.js'
+import ShowGameInfo from './Components/ShowGameInfo.js'
 import * as kbEvents from "./utils/keyboardEvents.js"
 import * as maps from "./utils/mapObject"
 import GameboyJS from './dist/gameboy' // Import the GameboyJS library
@@ -13,11 +14,13 @@ function App() {
   const [run, setRun] = useState(false)
   const [showInfo, setShowInfo] = useState(false)
   const [windowWidth, setWindowWidth] = useState((window.innerWidth > imgWidth ) ? imgWidth  : window.innerWidth)
+  const [gameTitle, setGameTitle] = useState()
   const soundEnableRef = useRef(null) // Ref for the sound checkbox
   const gameboyInstance = useRef(null) // Ref to store the Gameboy instance
   const hoverRef = useRef(null)
   const canvasRef = useRef(null)
   const scrollKeys = useRef(false)
+  //const gameTitleRef = useRef()
 
   // Initialize GameboyJS instance
   useEffect(() => {
@@ -62,6 +65,15 @@ function App() {
       document.removeEventListener("keydown", handleKeyDown)
     }
   }, [])
+
+  useEffect(() => {
+    const title = document.getElementById("game-name")
+      if (title) {
+        setTimeout(() => {
+          setGameTitle(title.innerText)
+        }, 10)
+      }
+  })
 
    // Makes sure resized images width isn't larger than images original width
    const handleResize = () => {
@@ -113,7 +125,7 @@ function App() {
       <div id="container" className="App">
         <div id="keyboard-info"
             onClick={() => setShowInfo(!showInfo)}>
-          {!showInfo ? <h2 style={{minWidth: "25em"}}>Info</h2>
+          {!showInfo ? <h2>Info</h2>
                      : <KeyboardInfo/>
           }
         </div>
@@ -139,7 +151,12 @@ function App() {
             </canvas>
           </div>
         </div>
-        <ChooseFile handleFileLoad={handleFileLoad} />
+        <div className="gameSection">
+          <ChooseFile handleFileLoad={handleFileLoad}/>
+          {gameTitle ? <ShowGameInfo title={gameTitle}/>
+                  : <></>
+          }
+       </div>
       </div>
       <div className="miscOptions">
         <p className="commands">

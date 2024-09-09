@@ -1,6 +1,7 @@
 # ReactBoy
 
 ## Gameboy emulator running on React.
+## Also uses MobyGames API to fetch game covers and release dates 
 
 ### https://eetu-niittymaki.github.io/ReactBoy/
 
