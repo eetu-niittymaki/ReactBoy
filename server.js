@@ -26,9 +26,9 @@ server.get('/api/games', async (req, res) => {
       params: {
         api_key: process.env.API_KEY,
         title: req.query.title,
+        platform: 10,
       },
     })
-    console.log(results.data)
     res.status(200).send(results.data.games)
   } catch (error) {
     console.error(error)

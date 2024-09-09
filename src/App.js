@@ -1,4 +1,4 @@
-import './App.css'
+import './App.scss'
 import { useEffect, useState, useRef, useCallback } from 'react'
 import ImageMapper from 'react-img-mapper'
 import KeyboardInfo from './Components/KeyboardInfo.js'
@@ -116,6 +116,7 @@ function App() {
 
   return (
     <div className="App" style={{ backgroundImage: `url(${process.env.PUBLIC_URL + "/bg.jpg"})` }}>
+      <div></div>
       <div id="keyboard-info"
         onClick={() => setShowInfo(!showInfo)}>
         {!showInfo ? <h2>Info</h2>

@@ -4,7 +4,7 @@ import GetGameData from "../utils/GetGameData";
 const ShowGameInfo = ({title}) => {
     const [image, setImage] = useState()
     const [year, setYear] = useState()
-    const url ="http://localhost:8080/api/games" || process.env.REACT_APP_API_ENDPOINT 
+    const url = ["http://localhost:8080/api/games", "https://reactboy.onrender.com/api/games"]
     title = title.toLowerCase()
 
     if (title.includes("pokemon")) {
@@ -20,7 +20,7 @@ const ShowGameInfo = ({title}) => {
     useEffect(() => {
         const getData = async () => {
             if (title) {
-                const res = await GetGameData(url, title)
+                const res = await GetGameData(url[1], title)
                 setImage(res.image)
                 setYear(res.release_year)
             }
