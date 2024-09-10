@@ -26,6 +26,4 @@ const parseNameFromCsv =  (title) => {
     return str
 }
 
-console.log(parseNameFromCsv("pokemon red"))
-
 module.exports = { parseNameFromCsv }
