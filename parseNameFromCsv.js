@@ -16,9 +16,8 @@ const parseNameFromCsv =  (title) => {
     rows.forEach((row) => {
         let columns = row.split("\n")
         columns[0] = columns[0].replace(/[^\w']|_/g, "") // Replace all punctuation and whitespaces
-        columns[0] = columns[0].replace(/" "/g, "")
         title = title.replace(" ", "")
-        let compare = dsc.compare(columns[0].toLowerCase(), title.toLowerCase())
+        let compare = dsc.compare(columns[0], title)
         if (compare > diff) {
             diff = compare
             str = row
@@ -26,5 +25,7 @@ const parseNameFromCsv =  (title) => {
     })
     return str
 }
+
+console.log(parseNameFromCsv("pokemon red"))
 
 module.exports = { parseNameFromCsv }
