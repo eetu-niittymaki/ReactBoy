@@ -17,7 +17,7 @@ const parseNameFromCsv =  (title) => {
         let columns = row.split("\n")
         columns[0] = columns[0].replace(/[^\w']|_/g, "") // Replace all punctuation and whitespaces
         title = title.replace(" ", "")
-        let compare = dsc.compare(columns[0], title)
+        let compare = dsc.compare(columns[0].toLowerCase(), title.toLowerCase())
         if (compare > diff) {
             diff = compare
             str = row

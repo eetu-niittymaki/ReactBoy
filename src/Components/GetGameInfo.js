@@ -10,7 +10,7 @@ const GetGameInfo = ({ title }) => {
     const url = ["http://localhost:8000/api/games", "https://reactboy.onrender.com/api/games"]
     if (title) {
       try {
-        const res = await axios.get(url[1], {
+        const res = await axios.get(url[0], {
           params: {
             title: title,
           },
@@ -25,10 +25,10 @@ const GetGameInfo = ({ title }) => {
   }
 
   useEffect(() => {
-    const timeoutId = setTimeout(() => { // Delay to not flood API
+    const timeout = setTimeout(() => { // Delay to not flood API
       getData()
     }, 50)
-    return () => clearTimeout(timeoutId)
+    return () => clearTimeout(timeout)
   }, [title])
 
   return (
