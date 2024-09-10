@@ -3,7 +3,7 @@ import { useEffect, useState, useRef, useCallback } from 'react'
 import ImageMapper from 'react-img-mapper'
 import KeyboardInfo from './Components/KeyboardInfo.js'
 import ChooseFile from './Components/ChooseFile.js'
-import ShowGameInfo from './Components/ShowGameInfo.js'
+import GetGameInfo from './Components/GetGameInfo.js'
 import * as kbEvents from "./utils/keyboardEvents.js"
 import * as maps from "./utils/mapObject"
 import GameboyJS from './dist/gameboy' // Import the GameboyJS library
@@ -147,7 +147,7 @@ function App() {
       </div>
       <div className="gameSection">
         <ChooseFile handleFileLoad={handleFileLoad} />
-        {gameTitle ? <ShowGameInfo title={gameTitle} />
+        {gameTitle ? <GetGameInfo title={gameTitle} />
           : <></>
         }
       </div>
