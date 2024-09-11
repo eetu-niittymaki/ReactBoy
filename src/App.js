@@ -7,6 +7,7 @@ import GetGameInfo from './Components/GetGameInfo.js'
 import * as kbEvents from "./utils/keyboardEvents.js"
 import * as maps from "./utils/mapObject"
 import GameboyJS from './dist/gameboy' // Import the GameboyJS library
+import { Petal, BlossomScene } from './Components/Petal'
 
 function App() {
   const imgWidth = 500
@@ -16,12 +17,12 @@ function App() {
   const [windowWidth, setWindowWidth] = useState((window.innerWidth > imgWidth) ? imgWidth : window.innerWidth)
   const [gameTitle, setGameTitle] = useState()
   const gameboyInstance = useRef(null) // Ref to store the Gameboy instance
+  const blossomInstance = useRef(null)
   const hoverRef = useRef(null)
   const canvasRef = useRef(null)
   const scrollKeys = useRef(false)
-  //const gameTitleRef = useRef()
 
-  // Initialize GameboyJS instance
+  // Initialize GameboyJS instance and Petal
   useEffect(() => {
     const options = {
       pad: { class: GameboyJS.Keyboard, mapping: null },
@@ -30,10 +31,22 @@ function App() {
         new GameboyJS.RomDropFileReader(document.getElementById('dropzone'))
       ]
     }
-
     const canvas = canvasRef.current
     gameboyInstance.current = new GameboyJS.Gameboy(canvas, options)
     gameboyInstance.current.setScreenZoom(2)
+
+    const petalsTypes = [
+      new Petal({ customClass: 'petal-style1' }),
+      new Petal({ customClass: 'petal-style2' }),
+      new Petal({ customClass: 'petal-style3' }),
+      new Petal({ customClass: 'petal-style4' }),
+      new Petal({ customClass: 'petal-style5' })
+    ]
+    const myBlossomSceneConfig = {
+      id: 'blossom-container',
+      petalsTypes
+    }
+    blossomInstance.current = new BlossomScene(myBlossomSceneConfig)
   }, [])
 
   // Set sound and canvas dimensions
@@ -115,41 +128,42 @@ function App() {
   }, [])
 
   return (
-    <div className="App" style={{ backgroundImage: `url(${process.env.PUBLIC_URL + "/bg.jpg"})` }}>
-      <div></div>
-      <div id="keyboard-info"
-        onClick={() => setShowInfo(!showInfo)}>
-        {!showInfo ? <h2>Info</h2>
-          : <KeyboardInfo />
-        }
-      </div>
-      <div className="canvasOuter">
-        <div className="canvasInner" id="canvasInner">
-          <ImageMapper
-            src={run ? `${process.env.PUBLIC_URL + "/gameboy-on.png"}` : `${process.env.PUBLIC_URL + "/gameboy-off.png"}`}
-            map={maps.MAP}
-            responsive={true}
-            imgWidth={windowWidth}
-            parentWidth={windowWidth}
-            onMouseEnter={enterArea}
-            onMouseLeave={leaveArea}
-            onClick={handleClick}
-          />
-          <canvas
-            ref={canvasRef}
-            className="canvas"
-            width="160"
-            height="144"
-          >
-            Your browser does not seem to support canvas.
-          </canvas>
+    <div className="App" style={{ backgroundImage: `url(${process.env.PUBLIC_URL + "/bg.jpg"})` }} id="blossom-container">
+      <div className="content" id="blossom-container">
+        <div id="keyboard-info"
+          onClick={() => setShowInfo(!showInfo)}>
+          {!showInfo ? <h2>Info</h2>
+            : <KeyboardInfo />
+          }
         </div>
-      </div>
-      <div className="gameSection">
-        <ChooseFile handleFileLoad={handleFileLoad} />
-        {gameTitle ? <GetGameInfo title={gameTitle} />
-          : <></>
-        }
+        <div className="canvasOuter" >
+          <div className="canvasInner" id="canvasInner">
+            <ImageMapper
+              src={run ? `${process.env.PUBLIC_URL + "/gameboy-on.png"}` : `${process.env.PUBLIC_URL + "/gameboy-off.png"}`}
+              map={maps.MAP}
+              responsive={true}
+              imgWidth={windowWidth}
+              parentWidth={windowWidth}
+              onMouseEnter={enterArea}
+              onMouseLeave={leaveArea}
+              onClick={handleClick}
+            />
+            <canvas
+              ref={canvasRef}
+              className="canvas"
+              width="160"
+              height="144"
+            >
+              Your browser does not seem to support canvas.
+            </canvas>
+          </div>
+        </div>
+        <div className="gameSection">
+          <ChooseFile handleFileLoad={handleFileLoad} />
+          {gameTitle ? <GetGameInfo title={gameTitle} />
+            : <></>
+          }
+        </div>
       </div>
     </div>
   )

@@ -10,7 +10,7 @@ const parseNameFromCsv =  (title) => {
     let str = ""
 
     const rows = data.split("\n")
-    diff = dsc.compare(rows[0], title) // Base values
+    diff = dsc.compare(rows[0].toLowerCase(), title.toLowerCase()) // Base values
     str = rows[0]
 
     rows.forEach((row) => {
