@@ -40,7 +40,6 @@ function App() {
       new Petal({ customClass: 'petal-style2' }),
       new Petal({ customClass: 'petal-style3' }),
       new Petal({ customClass: 'petal-style4' }),
-      new Petal({ customClass: 'petal-style5' })
     ]
     const myBlossomSceneConfig = {
       id: 'blossom-container',

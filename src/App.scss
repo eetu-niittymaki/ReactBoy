@@ -93,18 +93,16 @@
 	overflow: hidden;  /* Ensure petals stay inside the container */
 
   @media (max-width: 990px) {
-    height: 150%
+    height: 250%;
+    padding-top: 5%;
   }
 }
 
 .petal {
-	background: url(http://talktofill.surge.sh/cherry-blossom.png) no-repeat;
+	background: url(https://i.postimg.cc/7ZHdX33H/cherry-blossom.png) no-repeat;
 	position: absolute;
 	z-index: -1;        /* Ensures the petals are behind other elements within the container */
-  image-rendering: pixelated;  
-  image-rendering: crisp-edges;
-  transform: scale(3);
-  transform-origin: top left;
+
 
 	&.petal-style1 {
 		width: 45px;
@@ -125,10 +123,5 @@
 		width: 26px;
 		height: 34px;
 		background-position: -49px -35px;
-	}
-  &.petal-style5 {
-		width: 22px;
-		height: 30px;
-		background-position: -29px -15px;
 	}
 }

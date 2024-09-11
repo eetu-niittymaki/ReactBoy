@@ -37,7 +37,7 @@ export class BlossomScene {
 		this.container = container
 		this.placeholder = document.createElement('div')
 		this.petals = []
-		this.numPetals = 10
+		this.numPetals = 13
 		this.petalsTypes = config.petalsTypes
 		this.gravity = config.gravity || 0.8
 		this.windMaxSpeed = config.windMaxSpeed || 4
@@ -57,7 +57,7 @@ export class BlossomScene {
 	}
 
 	resetPetal(petal) {
-		petal.x = this.width * 1 - Math.random() * this.width * 2.5;
+		petal.x = this.width * 1 - Math.random() * this.width * 2.5
 		petal.y = petal.el.offsetHeight * -1
 		petal.z = Math.random() * 200
 
