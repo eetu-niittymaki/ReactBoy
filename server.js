@@ -1,5 +1,5 @@
 const parseData = require("./back_utils/parseData")
-const parseCsv = require("./parseNameFromCsv")
+const parseCsv = require("./back_utils/parseNameFromCsv")
 const express = require('express')
 const path = require('path')
 const axios = require('axios')
