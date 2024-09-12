@@ -7,10 +7,9 @@ const GetGameInfo = ({ title }) => {
   const [year, setYear] = useState()
   
   const getData = async () => {
-    const url = ["http://localhost:8000/api/games", "https://reactboy.onrender.com/api/games"]
     if (title) {
       try {
-        const res = await axios.get(url[0], {
+        const res = await axios.get(process.env.REACT_APP_API_ENDPOINT, {
           params: {
             title: title,
           },
