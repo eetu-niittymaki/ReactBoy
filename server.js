@@ -58,7 +58,7 @@ server.get('/api/games', async (req, res) => {
   const findGame = parseData.parseRes(results.data.games)                   // Parse to ge the first released one
   setTimeout(() => {              // Timeout needed because of API limitations
     getCompanies(findGame, res) // Find companies related to game by game id
-  }, 800)
+  }, 900)
 })
 
 server.get('/', (req, res) => {

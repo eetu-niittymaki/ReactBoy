@@ -28,7 +28,7 @@ const tokenBasedComparison = (set1, set2) => {
     return intersection / union
 }
 
-const transformString = (str) => {
+const transformString = (str) => { // Remove punctuation, whitespaces and stopwords
     const normalized = str.toLowerCase().replace(/[^\w\s]|_/g, "").trim()
     const tokens = normalized.split(" ").filter(word => !stopwords.has(word))
     return tokens.map(word => stemmer.stem(word)).join(" ")
@@ -42,7 +42,7 @@ const precomputeNgramsAndTokens = (str, ngramSize = 3) => {
 }
 
 let cachedData = null
-const loadDataOnce = (filePath) => {
+const loadDataOnce = (filePath) => { // Reads and loads csv data only once and not everytime function is called
     if (!cachedData) {
         const data = fs.readFileSync(filePath, 'utf8')
         cachedData = data.split("\n").map(row => row.trim()).filter(row => row.length > 0)

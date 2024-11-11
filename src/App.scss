@@ -20,7 +20,7 @@
   z-index: 1;
   
   @media (max-width: 1000px) {
-    flex-direction: column;
+    min-height: 1500px;
   }
 }
 
