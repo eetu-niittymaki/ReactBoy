@@ -11,7 +11,6 @@ import { Petal, BlossomScene } from './Components/Petal'
 
 function App() {
   const imgWidth = window.innerWidth <= 1536 ? 400 : 500
-  console.log(window.innerWidth)
 
   const [run, setRun] = useState(false)
   const [showInfo, setShowInfo] = useState(false)
