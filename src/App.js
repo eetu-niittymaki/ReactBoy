@@ -10,7 +10,7 @@ import GameboyJS from './dist/gameboy' // Import the GameboyJS library
 import { Petal, BlossomScene } from './Components/Petal'
 
 function App() {
-  const imgWidth = Math.round(window.innerWidth / 3.84)
+  const imgWidth = window.innerWidth <= 1536 ? 400 : 500
 
   const [run, setRun] = useState(false)
   const [showInfo, setShowInfo] = useState(false)
